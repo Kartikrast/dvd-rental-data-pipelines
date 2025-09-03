@@ -1,11 +1,12 @@
-<p align="center">
-  <img src="readme/imgs/dvd-logo.png" alt="DVD Logo" width="80" style="vertical-align: middle;"/>
-  <span style="font-size: 2em; font-weight: bold; vertical-align: middle; margin-left: 10px;">
-    Online DVD-Rental Store 🎬
-  </span>
-</p>
+<table align="center">
+  <tr>
+    <td><img src="readme/imgs/dvd-logo.png" alt="DVD Logo" width="80"/></td>
+    <td><h1>Online DVD-Rental Store 🎬</h1></td>
+  </tr>
+</table>
 
 <h3 align="center">Data Pipelines</h3>
+
 
 <p align="center">
   🌌 This repo is a part of an end-to-end concept project based on <b>Data Engineering</b>.  
