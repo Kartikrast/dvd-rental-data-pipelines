@@ -41,9 +41,9 @@ class FetchIDs:
     
     #### Example Usage:
 
-        >>> raw_movies = FetchIDs(page=1, start_date="2020-01-01", end_date="2020-12-31", type=movies)
+        >>> raw_movies = FetchIDs(page=1, start_date="2020-01-01", end_date="2020-12-31", type="movies")
         >>> total_pages = raw_movies.get_total_pages()
-        >>> movies = raw_movies.fetch_movies()
+        >>> movies = raw_movies.fetch_ids()
     """
     def __init__(self, page: int = None, start_date: str = None, end_date: str = None, type:str = "movies"):
         self.type = type
