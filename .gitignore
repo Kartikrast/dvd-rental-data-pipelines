@@ -1,0 +1,10 @@
+.env
+__pycache__/
+*.py[cod]
+
+
+# data
+temp/
+secrets/
+info/
+fetch_module/
