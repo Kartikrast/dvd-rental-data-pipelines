@@ -1,8 +1,9 @@
 <p align="center">
-  <img src="readme/imgs/dvd-logo.png" alt="DVD Logo" width="100"/>
+  <img src="readme/imgs/dvd-logo.png" alt="DVD Logo" width="80" style="vertical-align: middle;"/>
+  <span style="font-size: 2em; font-weight: bold; vertical-align: middle; margin-left: 10px;">
+    Online DVD-Rental Store 🎬
+  </span>
 </p>
-
-<h1 align="center">Online DVD-Rental Store 🎬</h1>
 
 <h3 align="center">Data Pipelines</h3>
 
@@ -13,5 +14,11 @@
 
 ---
 
-[![Project Status](https://img.shields.io/badge/status-active-brightgreen)](https://github.com/Kartikrast/social-infra-prediction-model)
-[![Python](https://img.shields.io/badge/python-3.11%2B-blue)](https://python.org)
+<p align="center">
+  <a href="https://github.com/Kartikrast/social-infra-prediction-model">
+    <img src="https://img.shields.io/badge/status-active-brightgreen"/>
+  </a>
+  <a href="https://python.org">
+    <img src="https://img.shields.io/badge/python-3.11%2B-blue"/>
+  </a>
+</p>
