@@ -16,7 +16,7 @@
 ---
 
 <p align="center">
-  <a href="https://github.com/Kartikrast/social-infra-prediction-model">
+  <a>
     <img src="https://img.shields.io/badge/status-active-brightgreen"/>
   </a>
   <a href="https://python.org">
