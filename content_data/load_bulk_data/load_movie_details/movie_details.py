@@ -9,6 +9,7 @@ It contains global constants:
 # external imports
 import httpx
 import asyncio
+import random
 from dotenv import load_dotenv
 from typing import Dict, Any
 load_dotenv()
@@ -55,16 +56,25 @@ class MovieDetails:
         self.client = client
     
     async def _fetch(self, endpoint: str = "") -> Dict[str, Any]:
-        try:
-            url = f"{self.url}/{self.movie_id}{endpoint}"
-            params = CONFIG.set_tmdb_params(params=self.default_params)
-            response = await self.client.get(url, headers=self.headers, params=params)
-            response.raise_for_status()
-            logger.info(f"Successfully fetched {endpoint}/details of movie_id: {self.movie_id}")
-            return response.json()
-        except Exception as e:
-            logger.error(f"❌ Error fetching movie details: {e} for movie_id={self.movie_id}")
-            return None
+        url = f"{self.url}/{self.movie_id}{endpoint}"
+        params = CONFIG.set_tmdb_params(params=self.default_params)
+        retries = 3
+        backoff = 1
+
+        for attempt in range(1, retries + 1):
+            try:
+                response = await self.client.get(url, headers=self.headers, params=params)
+                response.raise_for_status()
+                logger.info(f"✅ Successfully fetched {endpoint}/details of movie_id: {self.movie_id} (attempt {attempt})")
+                return response.json()
+
+            except Exception as e:
+                logger.warning(f"⚠️ Attempt {attempt} failed for movie_id={self.movie_id}: {e}")
+                if attempt == retries:
+                    logger.error(f"❌ Giving up after {retries} attempts for movie_id={self.movie_id}")
+                    return None
+                sleep_time = backoff * 2 ** (attempt - 1) + random.uniform(0, 0.5)
+                await asyncio.sleep(sleep_time)
     
     async def fetch_movie_details(self) -> Dict[str, Any]:
         return await self._fetch()
