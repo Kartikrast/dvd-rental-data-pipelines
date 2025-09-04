@@ -15,7 +15,7 @@ import json
 
 
 # local imports
-from .movie_details import MovieDetails
+from .fetch_movie_details import MovieDetails
 from ...base_log import Logger
 
 logger = Logger('run_movie_details').get_logger()
@@ -33,7 +33,7 @@ class RunMovieDetails:
             return await asyncio.gather(*tasks)
 
     async def _fetch_movie(self, movie_id: int, client: httpx.AsyncClient) -> Dict[str, Any]:
-        async with self.semaphore:  # limit concurrency
+        async with self.semaphore:
             movie = MovieDetails(movie_id=movie_id, client=client)
             return await movie.get_complied_data()
 
