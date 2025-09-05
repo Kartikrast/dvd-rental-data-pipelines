@@ -1,0 +1,4 @@
+pymongo
+httpx
+requests
+python-dotenv

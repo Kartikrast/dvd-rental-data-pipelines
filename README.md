@@ -28,7 +28,7 @@
 1. [About the Repository](#about-the-repository)
 2. [Project Structure](#project-structure)
 3. [Content Data](#content-data)
-
+4. [Setup Instructions](#setup-instructions)
 
 ## 📌 About the Repository
 This repository is a part of a bigger project called DVD-Rental. It contains all the data pipelines of the major project.
@@ -213,4 +213,50 @@ with open(output_path, "w", encoding="utf-8") as f:
     f.write('{"results": ')
     json.dump(movies, f, indent=4)
     f.write('}')
+```
+
+## 🛠️ Setup Instructions
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/Kartikrast/dvd-rental-data-pipelines.git
+```
+### 2️⃣ Create a Virtual Environment (Optional but Recommended)
+```bash
+python -m venv venv
+source venv/bin/activate   # On Linux/Mac
+venv\Scripts\activate      # On Windows
+```
+### 3️⃣ Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+### 4️⃣ Setup your mongoDB
+We only need a dummy DB to be configured in the config.py
+
+### 5️⃣ Get TMDB API Key and Access Token
+Visit: https://developer.themoviedb.org/reference/intro/getting-started to get the API credentials, it's free.
+
+### 6️⃣ Set Up Environment Variables
+
+Create a .env file in the root directory and add the required environment variables:
+
+See the [⚙ Environment Variables](#environment-variables) section for details.
+
+### 7️⃣ Setup VPN if you are from India
+The TMDB API doesn't work on Indian Network hence you will need a VPN to use the API.
+
+### 8️⃣ Open run_fetch_ids.py and run the command
+> Check the year set
+```python
+if __name__ == "__main__":
+    year = 2024
+    """Step-1: Fetch movie_ids for the year 2024"""
+    obj = RunFetchIDs(year=year, type="tv_shows")
+    ids = obj.fetch_yearly_data()
+
+```
+
+> Run this command
+```bash
+python -m content_data.load_bulk_data.fetch_ids.run_fetch_ids
 ```
