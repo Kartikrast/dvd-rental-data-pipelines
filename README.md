@@ -219,6 +219,7 @@ with open(output_path, "w", encoding="utf-8") as f:
 ### 1️⃣ Clone the Repository
 ```bash
 git clone https://github.com/Kartikrast/dvd-rental-data-pipelines.git
+cd .\dvd-rental-data-pipelines\
 ```
 ### 2️⃣ Create a Virtual Environment (Optional but Recommended)
 ```bash
