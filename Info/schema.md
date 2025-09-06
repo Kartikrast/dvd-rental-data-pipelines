@@ -1,5 +1,5 @@
 ## people
-```json
+```
 db.createCollection("people", {
     validator: {
         $jsonSchema: {
@@ -60,7 +60,7 @@ db.createCollection("people", {
 ```
 
 ## Images
-``` json
+```
 db.createCollection("images", {
     validator: {
         $jsonSchema: {
@@ -123,7 +123,7 @@ db.createCollection("images", {
 ```
 
 ## Videos
-``` json
+```
 db.createCollection("videos", {
     validator: {
         $jsonSchema: {
@@ -185,7 +185,7 @@ db.createCollection("videos", {
 ```
 
 ## Movie
-``` json
+```
 db.createCollection("movies", {
     validator: {
         $jsonSchema: {
@@ -335,7 +335,7 @@ db.createCollection("movies", {
 ```
 
 ## Movie IDs
-``` json
+```
 db.createCollection("movie_ids", {
     validator: {
         $jsonSchema: {
