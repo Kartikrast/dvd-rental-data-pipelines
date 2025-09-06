@@ -51,7 +51,6 @@ This repository controls the complete dataflow of the project and it also contai
 📁 dvd-rental
 ├── 📁 data
 │   ├── 📁 content_data
-│   │   ├── 📁 changes_pipeline # work in progress
 │   │   ├── 📁 load_bulk_data
 │   │   │    ├── 📁 config
 │   │   │    │    ├── 🐍 __init__.py
