@@ -6,6 +6,5 @@ __pycache__/
 # data
 temp/
 secrets/
-info/
 fetch_module/
 tmdb_logs/

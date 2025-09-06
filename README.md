@@ -68,9 +68,12 @@ This repository controls the complete dataflow of the project and it also contai
 │   │   │    └── 🐍 __init__.py
 │   │   ├── 🐍 __init__.py
 │   │   └── 🐍 base_log.py
-├── 📁 readme
-│   └── 📁 imgs # images for readme file nothing important
+├── ├── 📁 readme
+│   │   └── 📁 imgs # images for readme file nothing important
+│   └── 📁 Info
+│       └── 🔰 schema.md
 ├── ⚙ .env
+├── 📑 requirements.txt
 └── 🙈 README.md
 ```
 ## ⚙ Environment Variables
