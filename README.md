@@ -13,6 +13,8 @@
   In this repo we will store all the data pipelines needed in the <b>DVD-Rental</b> project.
 </p>
 
+> <b>Youtube Video Link: </b>https://youtu.be/P4s2gwqkLP4
+
 ---
 
 <p align="center">
