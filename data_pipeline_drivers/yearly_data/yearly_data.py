@@ -14,6 +14,7 @@ from content_data import Config, Logger, RunMovieDetails, RunFetchIDs
 
 config = Config()
 db = config.get_mongo_db()
+logger = Logger("all_movie_details").get_logger()
 movie_collection = db['movies']
 image_collection = db['images']
 video_collection = db['videos']
@@ -77,10 +78,9 @@ def load_details(details, year):
     if filtered_docs:
         movie_collection.insert_many(filtered_docs)
 
-    print(f"✅ Inserted {len(filtered_docs)} movies for year:{year}")
     return
 
-def load_images(images, year):
+def load_images(images):
     fixed_docs = []
     for index, doc in enumerate(images):
         try:
@@ -95,12 +95,13 @@ def load_images(images, year):
     # Insert into MongoDB
     if fixed_docs:
         image_collection.insert_many(fixed_docs)
-    print(f"✅ Inserted {len(fixed_docs)} images for year:{year}.")
     return
 
-def load_videos(videos, year):
+def load_videos(videos):
     video_collection.insert_many(videos)
-    print(f"✅ Inserted {len(videos)} videos for year:{year}")
+
+def load_credits(credits):
+    people_collection.insert_many(credits)
 
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -108,15 +109,27 @@ json_path = os.path.join(script_dir, 'fetch_year.json')
 with open(json_path, mode='r', encoding='utf-8') as f:
     file = json.load(f)
     year = file["year"]
-    print(f"Fetching for year: {year}")
+    logger.info(f"Fetching for year: {year}")
 
 ids = get_ids(year)
+logger.info(f"Total {len(ids)} ids fetched successfully.")
+
 movies = get_movie_details(ids)
+logger.info(f"Total {len(movies)} fetched successfully.")
+
+
 details, credits, images, videos = format_movie_data(movies)
+logger.info(f"Details bifurcated successfully.")
 input("Please turn off VPN and hit enter!")
+
 load_details(details, year)
-load_images(images, year)
-load_videos(videos, year)
+logger.info(f"Details loaded successfully.")
+load_images(images)
+logger.info(f"Images loaded successfully.")
+load_videos(videos)
+logger.info(f"Videos loaded successfully.")
+load_credits(credits)
+logger.info(f"Credits loaded successfully.")
 
 with open(json_path, mode='w', encoding='utf-8') as f:
     year_dict = {
