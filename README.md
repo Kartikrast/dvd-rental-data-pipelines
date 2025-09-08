@@ -65,9 +65,13 @@ This repository controls the complete dataflow of the project and it also contai
 │   │   │    │    ├── 🐍 fetch_movie_details.py
 │   │   │    │    └── 🐍 run_movie_details.py
 │   │   │    └── 🐍 __init__.py
-│   │   ├── 🐍 __init__.py
+│   │   ├── 🐍 __init__.py 
 │   │   └── 🐍 base_log.py
-├── ├── 📁 readme
+│   ├── 📁 data_pipeline_drivers
+│   │   └── 📁 yearly_data
+│   │       ├── {} fetch_year.json
+│   │       └── 🐍 yearly_data.py
+│   ├── 📁 readme
 │   │   └── 📁 imgs # images for readme file nothing important
 │   └── 📁 Info
 │       └── 🔰 schema.md
@@ -216,6 +220,8 @@ with open(output_path, "w", encoding="utf-8") as f:
     json.dump(movies, f, indent=4)
     f.write('}')
 ```
+### Purpose of the yearly_data.py
+This file serves the purpose of the executor for the <b>ETL Pipeline</b> to load yearly movies data into our MongoDB database we will be scheduling this file to run daily and load yearly data each day in the backwards order. The file used the `fetch_year.json` file to get which year to fetch and updates the file with -1 year each time it successfully fetches the data and load it into the database.
 
 ## 🛠️ Setup Instructions
 ### 1️⃣ Clone the Repository
